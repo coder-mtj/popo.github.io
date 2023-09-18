@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>导航栏、左边栏、主体和页脚栏</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      width: 100%;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+    }
+    #sidebar {
+      background-color: #666;
+      color: #fff;
+      width: 30%; /* 左边栏占30%宽度 */
+      padding: 20px;
+      height: calc(100vh - 20px); /* 左边栏填充屏幕高度减去顶部和底部padding */
+    }
+    #content {
+      background-color: #fff;
+      width: 70%; /* 主题占70%宽度 */
+      padding: 20px;
+      height: calc(100vh - 20px); /* 主题填充屏幕高度减去顶部和底部padding */
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>导航栏</h1>
+</header>
+<div class="container">
+  <div id="sidebar">
+    <h2>左边栏</h2>
+  </div>
+  <div id="content">
+    <h1>主体内容</h1>
+    <p>footer在下面。</p>
+  </div>
+</div>
+<footer>
+  <p>页脚栏</p>
+</footer>
+</body>
+</html>
