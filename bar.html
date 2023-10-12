@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛页面</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 60px;
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .top-bar .nav-button {
+            padding: 8px 16px;
+            margin: 0 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .section {
+            margin-bottom: 10px;
+        }
+
+        .sidebar .section label {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .sidebar .section input[type="button"] {
+            padding: 6px 12px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .sidebar .section input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 800px;
+            margin-top: 20px;
+        }
+
+        .thumbnail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #dddddd;
+        }
+
+        .thumbnail .id {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .thumbnail .content {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <button class="nav-button">学习</button>
+    <button class="nav-button">游戏</button>
+    <button class="nav-button">体育</button>
+</div>
+<div class="sidebar">
+    <div class="section">
+        <input type="button" value="发布帖子">
+        <input type="button" value="按评论最多">
+        <input type="button" value="按发布最新">
+    </div>
+</div>
+<div class="main-content" v-for="item in records">
+    <div v-index>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div class="main-content">
+    <div class="thumbnail">
+        <div class="avatar"></div>
+        <div class="id">User123</div>
+        <div class="content">这是帖子一的缩略内容</div>
+    </div>
+    <div class="thumbnail">
+        <div class="avatar"></div>
+        <div class="id">User456</div>
+        <div class="content">这是帖子二的缩略内容</div>
+    </div>
+    <div class="thumbnail">
+        <div class="avatar"></div>
+        <div class="id">User789</div>
+        <div class="content">这是帖子三的缩略内容</div>
+    </div>
+</div>
+<script>
+    <!--  国庆节玩去了, 做后端来不及了, axios暂时不写了  -->
+
+</script>
+</body>
+</html>

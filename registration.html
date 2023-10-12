@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册用户界面</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            padding: 8px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-register {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="title">注册用户</div>
+    <div class="form-group">
+        <label for="username">用户名</label>
+        <input type="text" id="username" placeholder="请输入用户名" v-model="username">
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" id="password" placeholder="请输入密码" v-model="password">
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="email" id="email" placeholder="请输入邮箱" v-model="email">
+    </div>
+    <button class="btn-register" @click="userRegister">注册</button>
+</div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    import {createApp} from 'vue'
+    import axios from 'axios';
+    import ElementPlus from 'element-plus'
+    import 'element-plus/dist/index.css'
+    import {ElNotification} from 'element-plus'
+
+    const app = createApp({
+        data() {
+            return {
+                username: "",
+                password: "",
+                email: ""
+            }
+        },
+        method() {
+            let that = this;
+            async function userRegister() {
+                const response = await axios.post("https://localhost:8080/test21/users/register", {
+                    username: that.username,
+                    password: that.password,
+                    email: that.email
+                });
+                if(response.code === 200){
+                    open1();
+                    window.location.href = "https://localhost:8080/test21/users/login";
+                }
+                else{
+                    open2();
+                }
+            }
+        }
+    });
+    app.amount("#app");
+    app.use(ElementPlus);
+
+    const open1 = () => {
+        ElNotification({
+            title: '注册成功成功',
+            message: '将在三秒后进入登录界面',
+            type: 'success',
+        })
+    }
+
+    const open2 = () => {
+        ElNotification({
+            title: '注册失败',
+            message: '用户名或邮箱已存在',
+            type: 'error',
+        })
+    }
+</script>
+</html>
