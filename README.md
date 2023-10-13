@@ -1,7 +1,7 @@
 # popo.github.io
 
 技术使用
-1.H5
+1.H5/n
 2.CSS3
 3.ElementUI
 3.Vue.js
